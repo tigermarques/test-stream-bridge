@@ -1,0 +1,26 @@
+spring:
+  cloud:
+    function:
+      definition: testConsume;interceptor
+    stream:
+      kafka:
+        binder:
+          autoCreateTopics: false
+          brokers:
+            - localhost:9092
+      bindings:
+        interceptor-out-0:
+          destination: topic2
+        interceptor-in-0:
+          group: interceptor
+          destination: topic1
+        # test bindings
+        testConsume-in-0:
+          group: test-interceptor
+          destination: topic2
+        testSupply-out-0:
+          destination: topic1
+
+logging.level:
+  root: ERROR
+  pt.streambridge: DEBUG

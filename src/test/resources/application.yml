@@ -1,0 +1,4 @@
+spring:
+  application.name: streambridge-test-application
+  profiles.active: test
+
